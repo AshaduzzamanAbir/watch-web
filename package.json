@@ -1,0 +1,23 @@
+{
+  "name": "watch-e-commerce-with-mern",
+  "version": "1.0.0",
+  "description": "website for watch",
+  "license": "ISC",
+  "author": "ashaduzzaman taluckder abir",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "config": "^4.2.0",
+    "cookie-parser": "^1.4.7",
+    "cross-env": "^10.1.0",
+    "debug": "^4.4.3",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.5",
+    "tailwindcss": "^4.1.18"
+  }
+}
