@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Product | Watch Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-900 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
+
+  <% if(success && success.length> 0) { %>
+    <div id="flash-message"
+      class="absolute top-8 left-1/2 -translate-x-1/2 bg-green-500 text-white font-semibold px-8 py-3 rounded-md shadow-lg z-10">
+      <%= success %>
+    </div>
+    <% } %>
+      <div class="max-w-4xl w-full space-y-8 bg-white p-10 rounded-3xl shadow-2xl">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center border-b border-gray-200 pb-6">
+          <div>
+            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Create New Product</h2>
+            <p class="mt-2 text-sm text-gray-500">Add a new item to your inventory.</p>
+          </div>
+          <a href="/shop" class="text-sm font-medium text-blue-600 hover:text-blue-500 transition">Back to Shop</a>
+        </div>
+
+        <!-- Form -->
+        <form action="/products/create" method="POST" enctype="multipart/form-data" class="space-y-8">
+
+          <!-- Section 1: Product Details -->
+          <div>
+            <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Product Information</h3>
+            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+
+              <!-- Product Image -->
+              <div class="sm:col-span-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Product Image</label>
+                <input type="file" name="image" class="block w-full text-sm text-slate-500
+              file:mr-4 file:py-2 file:px-12
+              file:rounded-full file:border-[1px] file:border-blue-500
+              file:text-sm file:font-semibold
+              file:bg-blue-50 file:text-blue-700
+              hover:file:bg-blue-100
+              cursor-pointer
+            " />
+              </div>
+
+              <!-- Product Name -->
+              <div class="sm:col-span-3">
+                <label for="name" class="block text-sm font-medium text-gray-700">Product Name</label>
+                <div class="mt-1">
+                  <input type="text" name="name" id="name" autocomplete="off"
+                    class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-lg py-3 px-4 border"
+                    placeholder="e.g. Royal Oak">
+                </div>
+              </div>
+
+              <!-- Price -->
+              <div class="sm:col-span-3">
+                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="text-gray-500 sm:text-sm">$</span>
+                  </div>
+                  <input type="number" name="price" id="price"
+                    class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 sm:text-sm border-gray-300 rounded-lg py-3 px-4 border"
+                    placeholder="0.00">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Panel Configuration -->
+          <div class="pt-4 border-t border-gray-200">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Panel Configuration</h3>
+            <p class="text-sm text-gray-500 mb-6">Customize the colors for the product display panel.</p>
+
+            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-3">
+              <!-- Background Color -->
+              <div>
+                <label for="bgcolor" class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                <input type="color" name="bgcolor" id="bgcolor"
+                  class="h-10 w-full rounded-lg border border-gray-300 cursor-pointer p-1 bg-white" value="#333333">
+              </div>
+              <!-- Panel Color -->
+              <div>
+                <label for="panelcolor" class="block text-sm font-medium text-gray-700 mb-2">Panel Color</label>
+                <input type="color" name="panalcolor" id="panelcolor"
+                  class="h-10 w-full rounded-lg border border-gray-300 cursor-pointer p-1 bg-white" value="#214020">
+              </div>
+              <!-- Text Color -->
+              <div>
+                <label for="textcolor" class="block text-sm font-medium text-gray-700 mb-2">Text Color</label>
+                <input type="color" name="textcolor" id="textcolor"
+                  class="h-10 w-full rounded-lg border border-gray-300 cursor-pointer p-1 bg-white" value="#ffffff">
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-6 border-t border-gray-200">
+            <button type="submit"
+              class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all shadow-blue-500/30">
+              Create Product
+            </button>
+          </div>
+
+        </form>
+      </div>
+</body>
+
+</html>
