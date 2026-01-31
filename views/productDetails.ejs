@@ -1,0 +1,118 @@
+<%- include('partials/header.ejs') %>
+
+  <body class="bg-[#050505] font-sans antialiased text-zinc-200">
+
+    <nav class="max-w-7xl mx-auto px-6 py-8">
+      <a href="/shop" class="group flex items-center gap-2 text-zinc-500 hover:text-white transition-colors w-fit">
+        <div class="p-2 rounded-full border border-zinc-800 group-hover:border-zinc-400 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+        </div>
+        <span class="text-xs font-black uppercase tracking-widest">Back to Collection</span>
+      </a>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pb-24">
+      <div class="flex flex-col lg:flex-row gap-12 lg:gap-24">
+
+        <div class="w-full lg:w-3/5 space-y-6">
+          <div
+            class="relative aspect-square rounded-[3rem] overflow-hidden flex items-center justify-center transition-all duration-700 shadow-2xl bg-[<%= product.panelcolor %>]">
+
+            <div class="absolute w-2/3 h-2/3 blur-[120px] rounded-full opacity-30 bg-[<%= product.textcolor %>] "></div>
+
+            <% if(product.image) { %>
+              <img src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="<%= product.name %>"
+                class="relative z-10 w-4/5 h-4/5 object-contain drop-shadow-[0_35px_50px_rgba(0,0,0,0.6)] hover:scale-105 transition-transform duration-700">
+              <% } %>
+
+                <div
+                  class="absolute top-8 left-8 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full">
+                  <span class="text-[10px] font-bold text-white uppercase tracking-widest">Masterpiece Edition</span>
+                </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4">
+            <div
+              class="h-32 bg-zinc-900/50 rounded-2xl border border-zinc-800 flex flex-col items-center justify-center p-4 text-center">
+              <span class="text-zinc-500 text-[9px] uppercase font-bold tracking-tighter mb-1">Movement</span>
+              <p class="text-xs font-bold uppercase tracking-widest">Automatic</p>
+            </div>
+            <div
+              class="h-32 bg-zinc-900/50 rounded-2xl border border-zinc-800 flex flex-col items-center justify-center p-4 text-center">
+              <span class="text-zinc-500 text-[9px] uppercase font-bold tracking-tighter mb-1">Water Resist</span>
+              <p class="text-xs font-bold uppercase tracking-widest">100 Meters</p>
+            </div>
+            <div
+              class="h-32 bg-zinc-900/50 rounded-2xl border border-zinc-800 flex flex-col items-center justify-center p-4 text-center">
+              <span class="text-zinc-500 text-[9px] uppercase font-bold tracking-tighter mb-1">Case Size</span>
+              <p class="text-xs font-bold uppercase tracking-widest">42 MM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-2/5 flex flex-col justify-center">
+          <div class="sticky top-12">
+            <header class="mb-10">
+              <h1 class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-4 leading-none">
+                <%= product.name %>
+              </h1>
+              <p class="text-indigo-400 font-bold tracking-[0.3em] uppercase text-xs">
+                Curated Essentials Collection
+              </p>
+            </header>
+
+            <div class="space-y-8">
+              <div class="flex items-baseline gap-4">
+                <span class="text-4xl font-light tracking-tighter text-[<%= product.textcolor %>]">
+                  $<%= product.price.toLocaleString() %>
+                </span>
+                <% if(product.discount> 0) { %>
+                  <span class="text-lg text-zinc-600 line-through">$<%= (product.price +
+                      product.discount).toLocaleString() %></span>
+                  <% } %>
+              </div>
+
+              <p class="text-zinc-400 leading-relaxed text-lg font-light">
+                Every watch tells more than time; it tells a story of craftsmanship. This <%= product.name %> features
+                  premium sapphire glass and an artisan-finished dial designed for those who value precision and
+                  legacy.
+              </p>
+
+              <div class="pt-8 space-y-4">
+                <form action="/add-to-cart/<%= product.id %>" method="POST">
+                  <button type="submit"
+                    class="w-full bg-white text-zinc-950 font-black py-5 rounded-2xl text-sm uppercase tracking-[0.2em] hover:bg-indigo-500 hover:text-white transition-all shadow-2xl shadow-indigo-500/10 active:scale-95">
+                    Acquire Timepiece
+                  </button>
+                </form>
+                <button
+                  class="w-full bg-transparent border border-zinc-800 text-zinc-400 font-bold py-4 rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all">
+                  Schedule an Appointment
+                </button>
+              </div>
+
+              <div class="pt-12 border-t border-zinc-900 flex justify-between">
+                <div class="text-center">
+                  <p class="text-[10px] text-zinc-500 font-black uppercase tracking-widest">Warranty</p>
+                  <p class="text-xs text-white mt-1">5 Years</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-[10px] text-zinc-500 font-black uppercase tracking-widest">Shipping</p>
+                  <p class="text-xs text-white mt-1">Complimentary</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-[10px] text-zinc-500 font-black uppercase tracking-widest">Returns</p>
+                  <p class="text-xs text-white mt-1">14 Days</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </body>

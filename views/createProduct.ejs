@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<% if(success && success.length> 0) { %>
+  <div id="flash-message"
+    class="absolute top-8 left-1/2 -translate-x-1/2 bg-green-500 text-white font-semibold px-8 py-3 rounded-md shadow-lg z-10">
+    <%= success %>
+  </div>
+  <% } %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Product | Watch Admin</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+    <%- include('partials/header.ejs') %>
 
-<body class="bg-zinc-900 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
-
-  <% if(success && success.length> 0) { %>
-    <div id="flash-message"
-      class="absolute top-8 left-1/2 -translate-x-1/2 bg-green-500 text-white font-semibold px-8 py-3 rounded-md shadow-lg z-10">
-      <%= success %>
-    </div>
-    <% } %>
-      <div class="max-w-4xl w-full space-y-8 bg-white p-10 rounded-3xl shadow-2xl">
+      <div class="max-w-8xl w-full space-y-8 bg-white p-10 rounded-3xl shadow-2xl">
 
         <!-- Header -->
         <div class="flex justify-between items-center border-b border-gray-200 pb-6">
@@ -110,6 +101,14 @@
 
         </form>
       </div>
-</body>
 
-</html>
+      <script>
+        // Smoothly hide flash message
+        const flash = document.getElementById('flash-message');
+        if (flash) {
+          setTimeout(() => {
+            flash.style.opacity = '0';
+            setTimeout(() => flash.remove(), 500);
+          }, 2000);
+        }
+      </script>
